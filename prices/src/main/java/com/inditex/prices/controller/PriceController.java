@@ -1,5 +1,6 @@
 package com.inditex.prices.controller;
 
+import com.inditex.prices.dto.PriceResponseDTO;
 import com.inditex.prices.model.Price;
 import com.inditex.prices.service.PriceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class PriceController {
     private PriceService priceService;
 
     @GetMapping
-    public ResponseEntity<Price> getPrice(
+    public ResponseEntity<PriceResponseDTO> getPrice(
             @RequestParam("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime date,
             @RequestParam("productId") Long productId,
             @RequestParam("brandId") Long brandId) {
@@ -26,6 +27,15 @@ public class PriceController {
         if (price == null) {
             return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(price);
+
+        PriceResponseDTO response = new PriceResponseDTO(
+                price.getProductId(),
+                price.getBrandId(),
+                price.getPriceList(),
+                price.getStartDate(),
+                price.getEndDate(),
+                price.getPrice()
+        );
+        return ResponseEntity.ok(response);
     }
 }
