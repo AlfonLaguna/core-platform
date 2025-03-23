@@ -13,8 +13,12 @@ import java.util.List;
 @Service
 public class PriceService {
 
+    private final PriceRepository priceRepository;
+
     @Autowired
-    private PriceRepository priceRepository;
+    public PriceService(PriceRepository priceRepository){
+        this.priceRepository = priceRepository;
+    }
 
     public Price getApplicablePrice(LocalDateTime date, Long productId, Long brandId) {
         List<Price> prices = priceRepository.findByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(

@@ -14,8 +14,12 @@ import java.time.LocalDateTime;
 @RequestMapping("/prices")
 public class PriceController {
 
+    private final PriceService priceService;
+
     @Autowired
-    private PriceService priceService;
+    public PriceController(PriceService priceService){
+        this.priceService = priceService;
+    }
 
     @GetMapping
     public ResponseEntity<PriceResponseDTO> getPrice(
