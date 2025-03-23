@@ -1,6 +1,7 @@
 package com.inditex.prices.service;
 
-import com.inditex.prices.model.Price;
+import com.inditex.prices.domain.Price;
+import com.inditex.prices.exception.PriceNotFoundException;
 import com.inditex.prices.repository.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +21,13 @@ public class PriceService {
                 brandId, productId, date, date);
 
         if (prices.isEmpty()) {
-            return null;
+            throw new PriceNotFoundException("No applicable price found for productId: " + productId +
+                    ", brandId: " + brandId + ", date: " + date);
         }
 
         // Selecciona el precio con mayor prioridad
         return prices.stream()
                 .max(Comparator.comparing(Price::getPriority))
-                .orElse(null);
+                .orElseThrow(() -> new PriceNotFoundException("Unexpected error retrieving price"));
     }
 }

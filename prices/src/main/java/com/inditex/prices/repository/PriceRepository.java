@@ -1,6 +1,6 @@
 package com.inditex.prices.repository;
 
-import com.inditex.prices.model.Price;
+import com.inditex.prices.domain.Price;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.time.LocalDateTime;
 import java.util.List;
