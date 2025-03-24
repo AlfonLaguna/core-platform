@@ -1,2 +1,6 @@
 # prueba-tecnica-inditex-core-platform
-Servicio REST en Spring Boot para consultar precios de productos de Inditex desde una base de datos H2 en memoria. Incluye endpoint con fecha, producto y marca como parámetros, y pruebas para validar tarifas y prioridades.
+Este repositorio contiene proyectos relacionados con la prueba técnica para Inditex.
+
+## Proyectos incluidos
+- **prices**: Microservicio para gestionar precios.
+  - Más detalles en [prices/README.md](./prices/README.md).
