@@ -1,5 +1,5 @@
-# prueba-tecnica-inditex-core-platform
-Este repositorio contiene proyectos relacionados con la prueba técnica para Inditex.
+# core-platform
+Este repositorio contiene componentes de una aplicación web.
 
 ## Proyectos incluidos
 - **prices**: Microservicio para gestionar precios.
